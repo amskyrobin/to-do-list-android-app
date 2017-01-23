@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">ForgetMeNot</string>
+    <string name="showAll">showAll</string>
+    <string name="add_a_new_task">Add a new task</string>
+    <string name="priority">priority</string>
+</resources>
