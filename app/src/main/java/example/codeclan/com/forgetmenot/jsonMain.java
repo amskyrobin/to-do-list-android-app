@@ -60,7 +60,7 @@ public class jsonMain extends AppCompatActivity {
         showTasks.setText(task);
     }
 
-    public void saveTaskJson (View view){
+    public void saveTaskJson (){
         SharedPreferences taskSharedPref = getSharedPreferences("tasks", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor= taskSharedPref.edit();
 

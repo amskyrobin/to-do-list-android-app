@@ -32,7 +32,6 @@ public class ActivityMain extends AppCompatActivity {
 
         FragmentAdapter fragmentAdapter = new FragmentAdapter(getSupportFragmentManager());
         pager.setAdapter(fragmentAdapter);
-//        pager.setCurrentItem(0);
 
 
     }
