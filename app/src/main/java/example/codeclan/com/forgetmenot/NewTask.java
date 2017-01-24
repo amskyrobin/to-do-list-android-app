@@ -3,9 +3,11 @@ package example.codeclan.com.forgetmenot;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.test.suitebuilder.TestMethod;
 import android.text.style.BulletSpan;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +36,7 @@ public class NewTask extends Fragment {
 
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_new_task, container, false);
@@ -41,6 +44,11 @@ public class NewTask extends Fragment {
         enterNewTask = (EditText) view.findViewById(R.id.enterNewTask);
         addNewTask = (Button) view.findViewById(R.id.addNewTask);
         showTasks = (TextView) view.findViewById(R.id.showTasks);
+
+
+
+
+
 
         addNewTask.setOnClickListener(new View.OnClickListener() {
             @Override
