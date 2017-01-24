@@ -5,6 +5,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,26 +22,40 @@ import java.util.Map;
 
 public class TaskList extends Fragment {
 
-    TextView taskList;
+//    private TextView taskList;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_task_list, container, false);
 
-        taskList = (TextView) view.findViewById(R.id.taskList);
+//        taskList = (TextView) view.findViewById(R.id.taskList);
 
-        taskList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                displayTaskList();
-            }
-        });
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewTask);
+
+        recyclerView.setHasFixedSize(true);
+
+
+        mLayoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(mLayoutManager);
+
+        mAdapter = new RecylerViewAdapter(getActivity(), getTaskList());
+        recyclerView.setAdapter(mAdapter);
+
+//        taskList.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                getTaskList();
+//            }
+//        });
 
         return view;
     }
 
 
-    public void displayTaskList(){
+    public ArrayList<Task> getTaskList(){ //Previously void return type
 
 
 
@@ -52,7 +68,8 @@ public class TaskList extends Fragment {
                 tasks.add(Task.fromJson(entry.getValue().toString()));
             }
         }
-        taskList.setText(tasks.toString());
+//        taskList.setText(tasks.toString());
+        return tasks;
     }
 }
 
