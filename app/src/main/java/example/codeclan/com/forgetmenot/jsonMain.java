@@ -54,8 +54,6 @@ public class jsonMain extends AppCompatActivity {
 
         String task = sharedPref.getString("task", "");
 
-//        Map<String, ?> task = sharedPref.getAll()
-//                for (task<String, ?> entry:map.getEntrySet());
 
         showTasks.setText(task);
     }
@@ -75,7 +73,7 @@ public class jsonMain extends AppCompatActivity {
         Gson gson = new Gson();
         String jsonTask = gson.toJson(task);
 
-        editor.putString(task.getSpKey(), jsonTask);
+        editor.putString(jsonTask, task.getSpKey());
         editor.apply();
 
         Toast.makeText(this, "saved", Toast.LENGTH_LONG).show();

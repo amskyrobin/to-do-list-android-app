@@ -1,5 +1,6 @@
 package example.codeclan.com.forgetmenot;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -31,6 +32,11 @@ public class Task {
 
     public String getSpKey(){
         return SP_KEY_TASK_PREFIX + id;
+    }
+
+    public static Task fromJson(String json){
+        Gson gson = new Gson();
+        return gson.fromJson(json, Task.class);
     }
 
 }

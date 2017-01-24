@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import static example.codeclan.com.forgetmenot.R.id.addNewTask;
 import static example.codeclan.com.forgetmenot.R.id.priorityTaskList;
@@ -66,10 +67,13 @@ public class NewTask extends Fragment {
         Gson gson = new Gson();
         String jsonTask = gson.toJson(task);
 
+
         editor.putString(task.getSpKey(), jsonTask);
         editor.apply();
 
         Toast.makeText(getActivity(), "saved", Toast.LENGTH_LONG).show();
     }
+
+
     }
 
