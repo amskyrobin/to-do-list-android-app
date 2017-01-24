@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_new_task"
     android:layout_width="match_parent"
@@ -13,12 +13,14 @@
 
 
     <TextView
+        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/add_a_new_task"
         android:layout_marginTop="190dp"/>
 
     <EditText
+        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/enterNewTask"
@@ -27,6 +29,7 @@
         android:hint="enter task here..."/>
 
     <Button
+        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/addNewTask"
@@ -34,10 +37,11 @@
         android:text="Add a Task"/>
 
     <TextView
+        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/showTasks"
         android:text="task will show here"
         android:layout_marginTop="350dp"/>
 
-</LinearLayout>
+</RelativeLayout>

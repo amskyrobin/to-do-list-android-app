@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 /**
@@ -40,15 +41,18 @@ public class TaskList extends Fragment {
 
     public void displayTaskList(){
 
-        String textValue = "";
+
 
         Map<String, ?> allTasks = getActivity().getSharedPreferences("tasks", Context.MODE_PRIVATE).getAll();
+        ArrayList<Task> tasks;
+        tasks = new ArrayList<Task>();
         for (Map.Entry<String, ?> entry : allTasks.entrySet()) {
             if (entry.getValue() instanceof String) {
-                textValue += (String)entry.getValue();
+//                textValue += (String)entry.getValue();
+                tasks.add(Task.fromJson(entry.getValue().toString()));
             }
         }
-        taskList.setText(textValue);
+        taskList.setText(tasks.toString());
     }
 }
 
