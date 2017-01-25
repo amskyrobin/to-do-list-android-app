@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -61,11 +63,16 @@ public class RecylerViewAdapter extends RecyclerView.Adapter<RecylerViewAdapter.
 
         TextView taskDesc;
 //        ImageView image;
+//        CheckBox checkBox;
+        Button delete;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             taskDesc = (TextView) itemView.findViewById(R.id.customRowText);
 //            image = (ImageView) itemView.findViewById(R.id.customRowImage);
+//            checkBox = (CheckBox) itemView.findViewById(R.id.checkBox);
+//            delete = (Button) itemView.findViewById(R.id.checkBox);
+
 
             taskDesc.setOnClickListener(this);
         }
