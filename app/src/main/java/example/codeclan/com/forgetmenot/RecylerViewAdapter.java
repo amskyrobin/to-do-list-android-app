@@ -2,7 +2,9 @@ package example.codeclan.com.forgetmenot;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +39,7 @@ public class RecylerViewAdapter extends RecyclerView.Adapter<RecylerViewAdapter.
     }
 
     public void delete(int position) {
+        Log.d(getClass().toString(), ""+position);
         tasks.remove(position);
         notifyItemRemoved(position);
     }
@@ -45,6 +48,7 @@ public class RecylerViewAdapter extends RecyclerView.Adapter<RecylerViewAdapter.
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = inflater.inflate(R.layout.custom_row, parent, false);
+
 
         MyViewHolder holder = new MyViewHolder(view);
         return holder;
@@ -62,12 +66,15 @@ public class RecylerViewAdapter extends RecyclerView.Adapter<RecylerViewAdapter.
         return tasks.size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+    class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView taskDesc;
         ImageView image;
         CheckBox checkBox;
         Button deleteButton;
+        Intent intent;
+        Context context;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -77,16 +84,26 @@ public class RecylerViewAdapter extends RecyclerView.Adapter<RecylerViewAdapter.
             image = (ImageView) itemView.findViewById(R.id.customRowImage);
             checkBox = (CheckBox) itemView.findViewById(R.id.checkBox);
             deleteButton = (Button) itemView.findViewById(R.id.deleteButton);
+            context = itemView.getContext();
 
 
-            deleteButton.setOnClickListener(this);
-        }
+            deleteButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View view) {
+                    delete(getAdapterPosition());
+                    Toast.makeText(context, "task deleted", Toast.LENGTH_LONG).show();
+                }
+            });
 
-        @Override
-        public void onClick(View view) {
+            image.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, FullDetailsActivity.class);
+                    int position = getAdapterPosition();
+                    intent.putExtra("Tasks", tasks.get(position).getTaskDesc());
+                    intent.putExtra("Position", tasks.get(position).getSpKey());
 
-            delete(getAdapterPosition());
-            Toast.makeText(context, "task deleted", Toast.LENGTH_LONG).show();
+                    context.startActivity(intent);
+                }
+            });
 
         }
 

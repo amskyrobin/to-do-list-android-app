@@ -22,7 +22,6 @@ import com.google.gson.JsonObject;
 
 import static example.codeclan.com.forgetmenot.R.id.addNewTask;
 import static example.codeclan.com.forgetmenot.R.id.enterTaskDetails;
-import static example.codeclan.com.forgetmenot.R.id.priorityTaskList;
 
 /**
  * Created by user on 22/01/2017.

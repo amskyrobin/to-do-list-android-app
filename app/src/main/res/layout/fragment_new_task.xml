@@ -14,21 +14,21 @@
         android:id="@+id/addNewTask"
         android:text="Add Task"
         android:layout_alignBottom="@+id/enterNewTask"
-        android:layout_marginBottom="13dp"
-        android:layout_marginLeft="130dp"/>
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="155dp"/>
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/enterTaskDetails"
-        android:hint="enter task details here"
+        android:hint="enter task details here..."
         android:layout_marginLeft="88dp"
         android:layout_marginStart="88dp"
         android:layout_above="@+id/addNewTask"
         android:text=""
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="13dp" />
+        android:layout_marginBottom="40dp" />
 
 
     <ImageView

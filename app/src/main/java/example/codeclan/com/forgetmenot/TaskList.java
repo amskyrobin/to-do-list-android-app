@@ -27,6 +27,7 @@ public class TaskList extends Fragment {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_task_list, container, false);
@@ -37,12 +38,14 @@ public class TaskList extends Fragment {
 
         recyclerView.setHasFixedSize(true);
 
-
+        Context context = getActivity();
         mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
 
         mAdapter = new RecylerViewAdapter(getActivity(), getTaskList());
         recyclerView.setAdapter(mAdapter);
+
+        mAdapter.notifyDataSetChanged();
 
 //        taskList.setOnClickListener(new View.OnClickListener() {
 //            @Override
