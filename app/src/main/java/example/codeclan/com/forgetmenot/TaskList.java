@@ -38,14 +38,15 @@ public class TaskList extends Fragment {
 
         recyclerView.setHasFixedSize(true);
 
+
+
         Context context = getActivity();
         mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
 
-        mAdapter = new RecylerViewAdapter(getActivity(), getTaskList());
-        recyclerView.setAdapter(mAdapter);
+        refresh();
 
-        mAdapter.notifyDataSetChanged();
+        //mAdapter.notifyDataSetChanged();
 
 //        taskList.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -55,6 +56,11 @@ public class TaskList extends Fragment {
 //        });
 
         return view;
+    }
+
+    public void refresh() {
+        mAdapter = new RecylerViewAdapter(getActivity(), getTaskList());
+        recyclerView.setAdapter(mAdapter);
     }
 
 

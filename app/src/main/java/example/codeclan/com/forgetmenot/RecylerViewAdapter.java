@@ -2,6 +2,7 @@ package example.codeclan.com.forgetmenot;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -38,10 +39,14 @@ public class RecylerViewAdapter extends RecyclerView.Adapter<RecylerViewAdapter.
         this.context = context;
     }
 
-    public void delete(int position) {
+    private void delete(int position) {
         Log.d(getClass().toString(), ""+position);
-        tasks.remove(position);
+
         notifyItemRemoved(position);
+
+        SharedPreferences sharedPreferences = context.getSharedPreferences("tasks", Context.MODE_PRIVATE);
+        sharedPreferences.edit().remove(tasks.get(position).getSpKey()).apply();
+        tasks.remove(position);
     }
 
     @Override
@@ -73,18 +78,16 @@ public class RecylerViewAdapter extends RecyclerView.Adapter<RecylerViewAdapter.
         ImageView image;
         CheckBox checkBox;
         Button deleteButton;
-        Intent intent;
-        Context context;
 
-        public MyViewHolder(View itemView) {
-            super(itemView);
+        public MyViewHolder(View view) {
+            super(view);
+
 
 
             taskDesc = (TextView) itemView.findViewById(R.id.customRowText);
             image = (ImageView) itemView.findViewById(R.id.customRowImage);
             checkBox = (CheckBox) itemView.findViewById(R.id.checkBox);
             deleteButton = (Button) itemView.findViewById(R.id.deleteButton);
-            context = itemView.getContext();
 
 
             deleteButton.setOnClickListener(new View.OnClickListener() {
@@ -98,20 +101,13 @@ public class RecylerViewAdapter extends RecyclerView.Adapter<RecylerViewAdapter.
                 public void onClick(View view) {
                     Intent intent = new Intent(context, FullDetailsActivity.class);
                     int position = getAdapterPosition();
-                    intent.putExtra("Tasks", tasks.get(position).getTaskDesc());
+                    //intent.putExtra("Tasks", tasks.get(position).getTaskDesc());
                     intent.putExtra("Position", tasks.get(position).getSpKey());
 
-                    context.startActivity(intent);
+                    itemView.getContext().startActivity(intent);
                 }
             });
 
-        }
-
-
-        public void itemChecked(View view) {
-            CheckBox checkBox = (CheckBox) view;
-            if (checkBox.isChecked()) {
-            }
         }
     }
 }

@@ -20,6 +20,8 @@ public class Task {
     @SerializedName("taskDetails")
     private String taskDetails;
 
+
+
     public Task(String taskDesc, int id, String taskDetails){
         this.taskDesc = taskDesc;
         this.id = id;
@@ -46,5 +48,7 @@ public class Task {
         Gson gson = new Gson();
         return gson.fromJson(json, Task.class);
     }
+
+
 
 }

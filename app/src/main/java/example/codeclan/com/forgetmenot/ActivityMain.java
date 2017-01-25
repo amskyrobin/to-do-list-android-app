@@ -1,9 +1,9 @@
 package example.codeclan.com.forgetmenot;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -33,8 +33,9 @@ public class ActivityMain extends AppCompatActivity {
         pager = (ViewPager) findViewById(R.id.pager);
         pagerTabStrip = (PagerTabStrip) findViewById(R.id.pager_header);
 
-        FragmentAdapter fragmentAdapter = new FragmentAdapter(getSupportFragmentManager());
+        final FragmentAdapter fragmentAdapter = new FragmentAdapter(getSupportFragmentManager());
         pager.setAdapter(fragmentAdapter);
+
 
 
     }

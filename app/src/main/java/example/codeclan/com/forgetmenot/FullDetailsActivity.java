@@ -2,6 +2,7 @@ package example.codeclan.com.forgetmenot;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -32,19 +33,22 @@ public class FullDetailsActivity extends AppCompatActivity {
         fullDetails = (TextView)findViewById(R.id.fullDetails);
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
-        int position = extras.getInt("Position");
+        String spKey = extras.getString("Position");
+        SharedPreferences sp = getSharedPreferences("tasks", MODE_PRIVATE);
+        String taskData = sp.getString(spKey, "{}");
+        task = Task.fromJson(taskData);
         System.out.println("");
-        String details = extras.getString("Tasks");
+        //String details = extras.getString("Tasks");
 
 
-        Task task = tasks.get(position);
+
 
         Log.d("On create called", task.getTaskDesc());
 
 //
 //        String fullDetails = task.getTaskDesc();
 //
-        fullDetails.setText(details);
+        fullDetails.setText(task.getTaskDetails());
 
     }
 

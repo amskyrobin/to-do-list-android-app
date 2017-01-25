@@ -35,7 +35,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/checkBox"
-        android:onClick="itemChecked"
         android:layout_alignBaseline="@+id/deleteButton"
         android:layout_alignBottom="@+id/deleteButton"
         android:layout_toLeftOf="@+id/deleteButton"
