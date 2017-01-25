@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -20,14 +21,20 @@ import java.util.Collections;
 
 public class RecylerViewAdapter extends RecyclerView.Adapter<RecylerViewAdapter.MyViewHolder> {
 
+    private  Context context;
     private LayoutInflater inflater;
     ArrayList<Task> tasks = new ArrayList<>();
 
     public RecylerViewAdapter(Context context, ArrayList<Task> tasks){
         inflater = LayoutInflater.from(context);
         this.tasks = tasks;
+        this.context = context;
     }
 
+    public void delete(int position){
+        tasks.remove(position);
+        notifyItemRemoved(position);
+    }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -39,9 +46,10 @@ public class RecylerViewAdapter extends RecyclerView.Adapter<RecylerViewAdapter.
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
         Task current = tasks.get(position);
         holder.taskDesc.setText(current.getTaskDesc());
+
     }
 
     @Override
@@ -49,7 +57,7 @@ public class RecylerViewAdapter extends RecyclerView.Adapter<RecylerViewAdapter.
         return tasks.size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView taskDesc;
 //        ImageView image;
@@ -58,6 +66,16 @@ public class RecylerViewAdapter extends RecyclerView.Adapter<RecylerViewAdapter.
             super(itemView);
             taskDesc = (TextView) itemView.findViewById(R.id.customRowText);
 //            image = (ImageView) itemView.findViewById(R.id.customRowImage);
+
+            taskDesc.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+
+            delete(getAdapterPosition());
+            Toast.makeText(context, "task has been clicked" + getPosition(), Toast.LENGTH_LONG).show();
+
         }
     }
 }

@@ -8,9 +8,14 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#246274"
+    android:background="#f68abbff"
     tools:context="example.codeclan.com.forgetmenot.jsonMain">
 
+    <!--<ImageView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:src="@drawable/forgetmenot"-->
+        <!--android:layout_margin="0dp"/>-->
 
     <TextView
         android:layout_centerHorizontal="true"
