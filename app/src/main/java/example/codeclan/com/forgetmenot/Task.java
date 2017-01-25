@@ -17,13 +17,21 @@ public class Task {
     @SerializedName("id")
     private int id;
 
-    public Task(String taskDesc, int id){
+    @SerializedName("taskDetails")
+    private String taskDetails;
+
+    public Task(String taskDesc, int id, String taskDetails){
         this.taskDesc = taskDesc;
         this.id = id;
+        this.taskDetails = taskDetails;
     }
 
     public String getTaskDesc(){
         return this.taskDesc;
+    }
+
+    public String getTaskDetails(){
+        return this.taskDetails;
     }
 
     public int getId(){

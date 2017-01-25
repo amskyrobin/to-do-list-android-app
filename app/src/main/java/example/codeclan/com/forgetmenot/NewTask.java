@@ -21,6 +21,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import static example.codeclan.com.forgetmenot.R.id.addNewTask;
+import static example.codeclan.com.forgetmenot.R.id.enterTaskDetails;
 import static example.codeclan.com.forgetmenot.R.id.priorityTaskList;
 
 /**
@@ -31,7 +32,7 @@ public class NewTask extends Fragment {
 
     EditText enterNewTask;
     Button addNewTask;
-    TextView showTasks;
+    EditText enterTaskDetails;
 
 
     @Override
@@ -40,7 +41,7 @@ public class NewTask extends Fragment {
 
         enterNewTask = (EditText) view.findViewById(R.id.enterNewTask);
         addNewTask = (Button) view.findViewById(R.id.addNewTask);
-        showTasks = (TextView) view.findViewById(R.id.showTasks);
+        enterTaskDetails = (EditText) view.findViewById(R.id.enterTaskDetails);
 
 
 
@@ -61,7 +62,8 @@ public class NewTask extends Fragment {
 
         SharedPreferences commonSharedPref = getActivity().getSharedPreferences("common", Context.MODE_PRIVATE);
         int taskId = commonSharedPref.getInt("task_id_counter", 0);
-        Task task = new Task(enterNewTask.getText().toString(), taskId);
+        Task task = new Task(enterNewTask.getText().toString(), taskId, enterTaskDetails.getText().toString());
+
 
         commonSharedPref.edit().putInt("task_id_counter", taskId +1).apply();
 

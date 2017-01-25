@@ -4,45 +4,48 @@
     android:id="@+id/fragment_new_task"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f68abbff"
     tools:context="example.codeclan.com.forgetmenot.jsonMain">
 
-    <TextView
-        android:layout_centerHorizontal="true"
+
+    <Button
+        android:layout_alignParentBottom="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add_a_new_task" />
+        android:id="@+id/addNewTask"
+        android:text="Add Task"
+        android:layout_alignBottom="@+id/enterNewTask"
+        android:layout_marginBottom="13dp"
+        android:layout_marginLeft="130dp"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/enterTaskDetails"
+        android:hint="enter task details here"
+        android:layout_marginLeft="88dp"
+        android:layout_marginStart="88dp"
+        android:layout_above="@+id/addNewTask"
+        android:text=""
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="13dp" />
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@drawable/forgetmenot"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/enterNewTask"
         android:text=""
-        android:layout_marginTop="230dp"
-        android:hint="enter task here..."/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/addNewTask"
-        android:text="Add a Task"/>
-
-    <TextView
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/showTasks"
-        android:text="task will show here"
-        android:layout_marginTop="350dp"/>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/forgetmenot"
-        android:scaleType="fitCenter"
-        android:layout_alignBottom="@+id/showTasks"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="29dp" />
+        android:hint="enter task here..."
+        android:layout_marginTop="340dp"
+        android:layout_marginLeft="88dp"/>
 
 </RelativeLayout>
