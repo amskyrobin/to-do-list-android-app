@@ -1,6 +1,7 @@
 package example.codeclan.com.forgetmenot;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,23 +18,25 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import static example.codeclan.com.forgetmenot.R.id.checkBox;
+
 /**
  * Created by user on 24/01/2017.
  */
 
 public class RecylerViewAdapter extends RecyclerView.Adapter<RecylerViewAdapter.MyViewHolder> {
 
-    private  Context context;
+    private Context context;
     private LayoutInflater inflater;
     ArrayList<Task> tasks = new ArrayList<>();
 
-    public RecylerViewAdapter(Context context, ArrayList<Task> tasks){
+    public RecylerViewAdapter(Context context, ArrayList<Task> tasks) {
         inflater = LayoutInflater.from(context);
         this.tasks = tasks;
         this.context = context;
     }
 
-    public void delete(int position){
+    public void delete(int position) {
         tasks.remove(position);
         notifyItemRemoved(position);
     }
@@ -62,27 +65,36 @@ public class RecylerViewAdapter extends RecyclerView.Adapter<RecylerViewAdapter.
     class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView taskDesc;
-//        ImageView image;
-//        CheckBox checkBox;
-        Button delete;
+        ImageView image;
+        CheckBox checkBox;
+        Button deleteButton;
 
         public MyViewHolder(View itemView) {
             super(itemView);
+
+
             taskDesc = (TextView) itemView.findViewById(R.id.customRowText);
-//            image = (ImageView) itemView.findViewById(R.id.customRowImage);
-//            checkBox = (CheckBox) itemView.findViewById(R.id.checkBox);
-//            delete = (Button) itemView.findViewById(R.id.checkBox);
+            image = (ImageView) itemView.findViewById(R.id.customRowImage);
+            checkBox = (CheckBox) itemView.findViewById(R.id.checkBox);
+            deleteButton = (Button) itemView.findViewById(R.id.deleteButton);
 
 
-            taskDesc.setOnClickListener(this);
+            deleteButton.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
 
             delete(getAdapterPosition());
-            Toast.makeText(context, "task has been clicked" + getPosition(), Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "task deleted", Toast.LENGTH_LONG).show();
 
+        }
+
+
+        public void itemChecked(View view) {
+            CheckBox checkBox = (CheckBox) view;
+            if (checkBox.isChecked()) {
+            }
         }
     }
 }

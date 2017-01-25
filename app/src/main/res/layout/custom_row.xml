@@ -1,35 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--<ImageView-->
-        <!--android:layout_width="40dp"-->
-        <!--android:layout_height="40dp"-->
-        <!--android:id="@+id/customRowImage"-->
-        <!--android:layout_gravity="center_vertical"-->
-        <!--android:src="@drawable/hanamon"/>-->
+    <ImageView
+        android:layout_width="42dp"
+        android:layout_height="52dp"
+        android:id="@+id/customRowImage"
+        android:src="@drawable/hanamon"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_width="217dp"
+        android:layout_height="wrap_content"
         android:text="this is a row"
         android:id="@+id/customRowText"
-        android:textSize="40dp"
-        android:layout_gravity="center_vertical"
-        android:padding="17dp"/>
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="right"
-        android:id="@+id/checkBox"
-        android:onClick=""/>
+        android:padding="17dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_toRightOf="@+id/customRowImage" />
 
     <Button
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:text="delete"
-        android:id="@+id/deleteButton"/>
-</LinearLayout>
+        android:id="@+id/deleteButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkBox"
+        android:onClick="itemChecked"
+        android:layout_alignBaseline="@+id/deleteButton"
+        android:layout_alignBottom="@+id/deleteButton"
+        android:layout_toLeftOf="@+id/deleteButton"
+        android:layout_toStartOf="@+id/deleteButton" />
+</RelativeLayout>
 
